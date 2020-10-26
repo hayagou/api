@@ -1,0 +1,38 @@
+
+spring:
+  messages:
+    basename: i18n/exception
+    encoding: UTF-8
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true #put mapping, delete mapping 이 안되서 추가함
+  datasource:
+    url: jdbc:mariadb://34.82.81.163:3306/mydb?characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: user
+    password: 1234
+    hikari:
+      maximum-pool-size: 100
+      minimum-idle: 10
+  jpa:
+    database: mysql
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      # create : 서버 시작할 때 모든 테이블 새엇ㅇ
+      # create-drop : 서버 시작할 때 테이블 생성, 종료할 때 테이블 삭제
+      # update : 서버 시작시 Entity와 Table을 비교하여 변경된 내용을 반영, Table이 없으면 새롭게 생성
+      # validate : 서버 시작 시 Entity와 실제 Table을 비교하여 다르면 시작하지 않고 종료
+      # none : 아무런 처리를 하지 않음음
+    jwt:
+      secret: govlepel@$&
+server:
+  port: 8080
+
