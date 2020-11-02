@@ -30,6 +30,17 @@ public class BoardController {
     private final BoardService boardService;
     private final ResponseService responseService;
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 access_token", required = true, dataType = "String", paramType = "header")
+    })
+    @ApiOperation(value = "게시판 생성", notes = "게시판을 생성한다.")
+    @PostMapping
+    public SingleResult<Board> saveBoard(String boardName){
+
+        return responseService.getSingleResult(boardService.writeBoard(boardName));
+    }
+
+
     @ApiOperation(value = "게시판 정보 조회", notes = "게시판 정보를 조회한다.")
     @GetMapping(value = "/{boardName}")
     public SingleResult<Board> boardInfo(@PathVariable String boardName) {

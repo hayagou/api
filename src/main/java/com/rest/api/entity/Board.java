@@ -16,4 +16,8 @@ public class Board extends CommonDateEntity{
 
     @Column(nullable = false, length = 100)
     private String name;
+
+    public Board(String name) {
+        this.name = name;
+    }
 }

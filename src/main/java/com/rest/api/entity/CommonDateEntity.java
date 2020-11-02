@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class CommonDateEntity { // 날짜 필드 상속 처리
     @CreatedDate // Entity 생성시 자동으로 날짜 세팅
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
     @LastModifiedDate // Entity 수정시 자동으로 날짜 세팅
-    private LocalDateTime modifieAt;
+    private LocalDateTime modifiedAt;
 }

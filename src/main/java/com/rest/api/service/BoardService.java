@@ -26,10 +26,15 @@ public class BoardService {
     private final PostJpaRepo postJpaRepo;
     private final UserJpaRepo userJpaRepo;
 
+    public Board writeBoard(String boardName){
+        return boardJpaRepo.save(new Board(boardName));
+    }
+
     // 게시판 이름으로 게시판을 조회, 없을경우
     public Board findBoard(String boardName){
         return Optional.ofNullable(boardJpaRepo.findByName(boardName)).orElseThrow(CResourceNotExistException::new);
     }
+
     // 게시판 이름으로 게시물 리스트 조회.
     public List<Post> findPosts(String boardName){
         return postJpaRepo.findByBoard(findBoard(boardName));
